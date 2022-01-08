@@ -7,4 +7,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'iotproject';
+  vs=false;
+
+  appear(){
+    this.vs=true;
+  }
+  disappear(){
+    this.vs=false;
+  }
+  
 }
