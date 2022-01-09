@@ -13,4 +13,4 @@ while True:
     # topic: "TEMPERATURE"
     client.publish("TEMPERATURE", randNumber)
     print("Temperature outside : " + str(randNumber))
-    time.sleep(1)
+    time.sleep(0.1)
