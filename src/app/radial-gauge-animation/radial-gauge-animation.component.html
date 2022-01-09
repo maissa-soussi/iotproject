@@ -198,6 +198,10 @@
         visibility: hidden;
       }
     }
+    i{
+        padding: 15px;
+        color: rgb(109, 107, 107);
+    }
   </style>
   
   <div class="toolbar" role="banner">
@@ -227,20 +231,66 @@
       <span>Application de visualisation des températures</span>
   
       <svg id="rocket-smoke" xmlns="http://www.w3.org/2000/svg" width="516.119" height="1083.632" viewBox="0 0 516.119 1083.632">
-        <title>Rocket Ship Smoke</title>
         <path id="Path_40" data-name="Path 40" d="M644.6,141S143.02,215.537,147.049,870.207s342.774,201.755,342.774,201.755S404.659,847.213,388.815,762.2c-27.116-145.51-11.551-384.124,271.9-609.1C671.15,139.365,644.6,141,644.6,141Z" transform="translate(-147.025 -140.939)" fill="#f5f5f5"/>
       </svg>
   
     </div>
+    <div class="container sample">
+        <div class="container" >
+            <igx-radial-gauge
+                #radialGauge
+                height="330px"
+                width="100%"
+                value=25
+                interval=5
+                minimumValue=0
+                maximumValue=50
+    
+                labelInterval=5
+                labelExtent=0.71
+                minorTickCount=4
+                minorTickEndExtent=.625
+                minorTickStartExtent=.6
+                minorTickStrokeThickness=1
+                minorTickBrush = "#79797a"
+                tickStartExtent=.6
+                tickEndExtent=.65
+                tickStrokeThickness=2
+                tickBrush = "#79797a"
+                needleShape="Triangle"
+                needleEndWidthRatio=0.03
+                needleStartWidthRatio=0.05
+                needlePivotShape="CircleOverlay"
+                needlePivotWidthRatio=0.15
+                needleBaseFeatureWidthRatio=0.15
+                needleBrush="#79797a"
+                needleOutline="#79797a"
+                needlePivotBrush="#79797a"
+                needlePivotOutline="#79797a"
+                isNeedleDraggingEnabled=true
+                backingBrush="#fcfcfc"
+                backingOutline="#d6d6d6"
+                backingStrokeThickness=5
+                scaleStartAngle=120
+                scaleEndAngle=60
+                scaleBrush="#d6d6d6"
+                rangeBrushes="#F86232, #DC3F76, #7446B9"
+                rangeOutlines="#F86232, #DC3F76, #7446B9">
+    
+            </igx-radial-gauge>
+        </div>
+    
+    </div>
+    
   
     <div class="card-container">
       <a class="card" (click)="appear()">
-        <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg>
-        <span>Visualiser les températures</span>
+        <i class="fas fa-temperature-low"></i>
+        <span>Visualiser les 10 derniers températures</span>
         <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>    </a>
   
       <a class="card" (click)="disappear()">
-        <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/></svg>
+        <i class="far fa-stop-circle"></i>
         <span>Arrêter la visualisation</span>
         <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
       </a>
@@ -250,49 +300,3 @@
 
   
   </div>
-<div class="container sample">
-    <div class="container" >
-        <igx-radial-gauge
-            #radialGauge
-            height="330px"
-            width="100%"
-            value=25
-            interval=5
-            minimumValue=0
-            maximumValue=50
-
-            labelInterval=5
-            labelExtent=0.71
-            minorTickCount=4
-            minorTickEndExtent=.625
-            minorTickStartExtent=.6
-            minorTickStrokeThickness=1
-            minorTickBrush = "#79797a"
-            tickStartExtent=.6
-            tickEndExtent=.65
-            tickStrokeThickness=2
-            tickBrush = "#79797a"
-            needleShape="Triangle"
-            needleEndWidthRatio=0.03
-            needleStartWidthRatio=0.05
-            needlePivotShape="CircleOverlay"
-            needlePivotWidthRatio=0.15
-            needleBaseFeatureWidthRatio=0.15
-            needleBrush="#79797a"
-            needleOutline="#79797a"
-            needlePivotBrush="#79797a"
-            needlePivotOutline="#79797a"
-            isNeedleDraggingEnabled=true
-            backingBrush="#fcfcfc"
-            backingOutline="#d6d6d6"
-            backingStrokeThickness=5
-            scaleStartAngle=120
-            scaleEndAngle=60
-            scaleBrush="#d6d6d6"
-            rangeBrushes="#F86232, #DC3F76, #7446B9"
-            rangeOutlines="#F86232, #DC3F76, #7446B9">
-
-        </igx-radial-gauge>
-    </div>
-
-</div>

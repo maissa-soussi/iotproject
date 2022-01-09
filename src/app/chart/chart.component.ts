@@ -9,21 +9,9 @@ import { Chart, registerables } from 'chart.js'
 export class ChartComponent implements OnInit {
 chart:any;
 re:any;
-d :any[]=[];
+//d :any[]=[];
   constructor(private http: HttpClient) {    
-    this.http.get<any>("http://localhost:5000/temperatures")
-        .subscribe(
-       (result) => {
-         //console.log(result);
-        for (let i = 0; i < 9; i++) {
-          this.d[i]=result[i].temperature;
-        }
-        console.log(this.d);
-  
-       },
-       (error) => {console.log(error); }
-     )
-
+    
      
    }
 
@@ -35,11 +23,27 @@ d :any[]=[];
       
   }
   loadChart(){
+    var d;
+    this.http.get<any>("http://localhost:5000/temperatures")
+        .subscribe(
+       (result) => {
+         //console.log(result);
+        for (let i = 0; i < 9; i++) {
+          d[i]=result[i].temperature;
+                    
+        }
+        //console.log(d);
+  
+       },
+       (error) => {console.log(error); }
+     )
+console.log(d);
+
     new Chart(this.chart, {
       type:'line',
       data:{
         datasets: [{
-          data:this.d,
+          data:d,
           label: 'Températures',
           backgroundColor: '#007bff',
           tension: 0.2,
