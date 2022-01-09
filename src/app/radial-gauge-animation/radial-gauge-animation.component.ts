@@ -1,4 +1,6 @@
-import { AfterViewInit, Component, ViewChild, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ViewChild, OnInit, Input } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { ToastrService } from 'ngx-toastr';
 
 // radial gauge imports
 import { SweepDirection } from "igniteui-angular-core";
@@ -21,19 +23,46 @@ export class RadialGaugeAnimationComponent implements AfterViewInit {
 
     @ViewChild("radialGauge", { static: true })
     public radialGauge: IgxRadialGaugeComponent;
-
-  constructor() { 
-   }
-
-  ngOnInit(): void {
+    temp : any;
+    vs=false;
+    constructor(private http: HttpClient, private toastr: ToastrService) { 
+    }
+    private async getTemp(): Promise<void> {
+    
+      while(true){
+        await new Promise(f => setTimeout(f, 2000));
+        this.http.get<any>("http://localhost:5000/subscriber")
+        .subscribe(
+       (result) => {
+         this.temp = result;
+         console.log(result[0].temperature);
+         this.radialGauge.value = result[0].temperature
+         if (this.temp[0].temperature > 40){
+           this.toastr.error('La temperature est ' + this.temp[0].temperature + '° C');
+         }
+   
+       },
+       (error) => {console.log(error); }
+     )
+        
+      }
+    }
+   
+  
+  appear(){
+    this.vs=true;
+  }
+  disappear(){
+    this.vs=false;
   }
 
-
     public ngAfterViewInit(): void {
-
+      
         // enabling animation duration (in milliseconds)
         this.radialGauge.transitionDuration = 500;
         this.AnimateToGauge3();
+
+        this.getTemp();
     }
     public AnimateToGauge3(): void {
 
@@ -42,7 +71,7 @@ export class RadialGaugeAnimationComponent implements AfterViewInit {
 
         this.radialGauge.minimumValue = 0;
         this.radialGauge.maximumValue = 50;
-        this.radialGauge.value = 25;
+        
         this.radialGauge.interval = 5;
 
         // setting appearance of labels

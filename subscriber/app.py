@@ -14,7 +14,7 @@ def getTemp():
     topics = ['TEMPERATURE']
     msg = subscribe.simple(topics, hostname="broker.hivemq.com", retained=False, msg_count=1)
     temp = float(msg.payload)
-    return jsonify([{'temperature': temp}])
+    return jsonify([{'temperature': round(temp,2)}])
 
 
 @app.route('/temperatures',methods=['GET'])
