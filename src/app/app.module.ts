@@ -6,6 +6,8 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RadialGaugeAnimationComponent } from './radial-gauge-animation/radial-gauge-animation.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { RadialGaugeAnimationComponent } from './radial-gauge-animation/radial-g
     IgxRadialGaugeModule,
 	  BrowserAnimationsModule,
   	FormsModule,
-	  IgxRadialGaugeModule
+	  IgxRadialGaugeModule,
+    HttpClientModule,
+    ToastrModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]
