@@ -9,17 +9,15 @@ import { Chart, registerables } from 'chart.js'
 export class ChartComponent implements OnInit {
 chart:any;
 re:any;
-d :any[]=[];
+d : number[] = [0,0,0,0,0,0,0,0,0,0]
   constructor(private http: HttpClient) {    
     this.http.get<any>("http://localhost:5000/temperatures")
         .subscribe(
        (result) => {
-         //console.log(result);
-        for (let i = 0; i < 9; i++) {
-          this.d[i]=result[i].temperature;
+        for (let i = 0; i < result.length; i++){
+          this.d[i] = result[i].temperature
         }
         console.log(this.d);
-  
        },
        (error) => {console.log(error); }
      )
@@ -34,7 +32,9 @@ d :any[]=[];
       this.loadChart();
       
   }
-  loadChart(){
+  async loadChart(): Promise<void>{
+    await new Promise(f => setTimeout(f, 2000));
+    console.log(this.d)
     new Chart(this.chart, {
       type:'line',
       data:{
